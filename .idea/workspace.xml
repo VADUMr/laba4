@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="082ed414-b422-4f4f-976b-d56fbce4e6c6" name="Changes" comment="Сейв">
+    <list default="true" id="082ed414-b422-4f4f-976b-d56fbce4e6c6" name="Changes" comment="Сейв2.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laba4/ApplicationProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laba4/ApplicationProgram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laba4/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laba4/ControllerProgram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Server.java" afterDir="false" />
@@ -45,7 +44,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.ApplicationProgram.executor": "Debug",
+    "Application.ApplicationProgram.executor": "Run",
     "Application.Client.executor": "Run",
     "Application.HelloApplication.executor": "Run",
     "Application.Server.executor": "Run",
@@ -130,7 +129,7 @@
       <workItem from="1712182274822" duration="531000" />
       <workItem from="1712207097447" duration="10117000" />
       <workItem from="1712218600678" duration="286000" />
-      <workItem from="1712254441823" duration="2873000" />
+      <workItem from="1712254441823" duration="9688000" />
     </task>
     <task id="LOCAL-00001" summary="Сейв">
       <option name="closed" value="true" />
@@ -140,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712176433102</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Сейв2.0">
+      <option name="closed" value="true" />
+      <created>1712257599970</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712257599970</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +155,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Сейв" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сейв" />
+    <MESSAGE value="Сейв2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сейв2.0" />
   </component>
 </project>

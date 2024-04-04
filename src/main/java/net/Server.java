@@ -17,55 +17,51 @@ public class Server {
 
         while (true) {
             Socket client = serverSocket.accept();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            String clientInput;
-            if((clientInput = reader.readLine()) != null) {
-                sendResponse(client);
-            }else {
-                handleClient(client);
+            serverWork(client);
+        }
+    }
+    public void serverWork(Socket client) throws IOException {
+        try (
+                BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+        ) {
+            // Отримуємо ім'я файлу від клієнта
+            String filename = reader.readLine();
+            File file = new File(filename);
+            if (!file.exists()) {
+                writer.write("Файл не знайдено");
+                writer.newLine();
+                writer.flush();
+                return;
+            }
+
+            try (BufferedReader fileReader = new BufferedReader(new FileReader(file))) {
+                StringBuilder fileContent = new StringBuilder();
+                String line;
+                while ((line = fileReader.readLine()) != null) {
+                    fileContent.append(line);
+                }
+
+                writer.write("Ваш порт " + client.getPort() + " Ви підєдналися до порту " + client.getLocalPort()
+                        + " та IP адреси " + client.getLocalAddress());
+                writer.newLine();
+                writer.flush();
+
+                writer.write("Данні з файлу");
+                writer.newLine();
+                writer.flush();
+
+                // Відправляємо клієнту розбитий вміст файлу
+                int startPos = 0;
+                for (int i = 0; i < 3; i++) {
+                    int endPos = Math.min(startPos + (i == 0 ? 8 : i == 1 ? 10 : 12), fileContent.length());
+                    writer.write(fileContent.substring(startPos, endPos));
+                    writer.newLine();
+                    writer.flush();
+                    startPos = endPos;
+                }
+                client.close();
             }
         }
-    }
-    public void handleClient(Socket client) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-
-        System.out.println("dsfsdfsdf");
-
-        // Отримуємо ім'я файлу від клієнта
-        String filename = reader.readLine();
-        File file = new File(filename);
-        if (!file.exists()) {
-            writer.write("Файл не знайдено");
-            writer.newLine();
-            writer.flush();
-            return;
-        }
-
-        BufferedReader fileReader = new BufferedReader(new FileReader(file));
-        StringBuilder fileContent = new StringBuilder();
-        String line;
-        while ((line = fileReader.readLine()) != null) {
-            fileContent.append(line);
-        }
-        fileReader.close();
-
-        // Відправляємо клієнту розбитий вміст файлу
-        int startPos = 0;
-        for (int i = 0; i < 3; i++) {
-            int endPos = Math.min(startPos + (i == 0 ? 8 : i == 1 ? 10 : 12), fileContent.length());
-            writer.write(fileContent.substring(startPos, endPos));
-            writer.newLine();
-            writer.flush();
-            startPos = endPos;
-
-        }
-    }
-    public void sendResponse(Socket client) throws IOException{
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-        writer.write("Ваш порт " + client.getPort() + " Ви підєдналися до порту " + client.getLocalPort()
-                + " та IP адреси " + client.getLocalAddress());
-        writer.flush();
-        writer.close();
     }
 }

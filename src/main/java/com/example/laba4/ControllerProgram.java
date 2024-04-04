@@ -15,16 +15,17 @@ import net.Server;
 import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class ControllerProgram {
     @FXML
     private Label exceptionServer;
     @FXML
-    private Label exceptionSendFile;
-    @FXML
     private Label exceptionClient;
     @FXML
+    private Label exceptionFile;
     private TextArea events;
     @FXML
     private TextField portClient;
@@ -33,47 +34,48 @@ public class ControllerProgram {
     @FXML
     private TextField ipClient;
 
-    boolean serverStarted = false;
-    boolean clientStarted = false;
 
     @FXML
     protected void sendFile() throws IOException {
-
         Platform.runLater(() -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Оберіть файл");
-
-            File selectedFile = fileChooser.showOpenDialog(new Stage());
-
-            if (selectedFile != null) {
-                System.out.println("Вибраний файл: " + selectedFile.getAbsolutePath());
-                if (!serverStarted) {
-                    System.out.println("Сервер не запущений");
-                } else {
-                    if (!clientStarted) {
-                        System.out.println("Клієнт не коректний");
-                    } else {
                         new Thread(() -> {
                         try {
                             int port = Integer.parseInt(portClient.getText());
-
+                            if (port < 0 || port > 65535) {
+                                Platform.runLater(() -> exceptionClient.setText("Порт повинен бути цілим числом від 0 до 65535"));
+                                return;
+                            }
                             String ip = ipClient.getText();
-                            Client client = new Client(ip, port);
 
-                            client.connectToSendFile(selectedFile);
-                            client.readResponseFile();
+                            String IP_ADDRESS_REGEX = "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$";
+                            Pattern pattern = Pattern.compile(IP_ADDRESS_REGEX);
+                            Matcher matcher = pattern.matcher(ip);
+                            if(matcher.matches()) {
+                                Platform.runLater(() -> exceptionClient.setText("Клієнт ок"));
 
-                        } catch (IOException e) {
-                            System.err.println("Невдалося підключитися " + e);
+                                FileChooser fileChooser = new FileChooser();
+                                fileChooser.setTitle("Оберіть файл");
+
+                                File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+                                if (selectedFile != null) {
+                                    System.out.println("Вибраний файл: " + selectedFile.getAbsolutePath());
+                                    Client client = new Client(ip, port);
+
+                                    client.connect(selectedFile.getAbsolutePath());
+                                    client.readResponseFile();
+                                }
+
+                            }else{
+                                Platform.runLater(() ->exceptionClient.setText("Некоректне значення порту клієнта. Введіть ціле число."));
+                            }
+                        } catch (NumberFormatException e) {
+                            Platform.runLater(() ->exceptionClient.setText("Некоректне значення порту клієнта. Введіть ціле число."));
+                        }catch (IOException e) {
+                            Platform.runLater(() ->exceptionClient.setText("Невдалося підключитися " + e.getMessage()));
                         }
                         }).start();
-                    }
-                }
-            } else {
-                System.out.println("Файл не було вибрано.");
-            }
         });
-
     }
     @FXML
     protected void startServer() throws IOException {
@@ -84,8 +86,8 @@ public class ControllerProgram {
                     Platform.runLater(() -> exceptionServer.setText("Порт повинен бути цілим числом від 0 до 65535"));
                     return;
                 }
+                Platform.runLater(() -> exceptionServer.setText("Сервер ок"));
                 Server socketServer = new Server(port);
-                serverStarted = true;
                 socketServer.start();
 
             } catch (NumberFormatException e) {
@@ -94,29 +96,5 @@ public class ControllerProgram {
                 Platform.runLater(() ->exceptionServer.setText("Помилка при старті сервера: " + e.getMessage()));
             }
         }).start();
-    }
-    @FXML
-    protected void startClient() throws IOException{
-        new Thread(() -> {
-            try {
-                int port = Integer.parseInt(portClient.getText());
-                if (port < 0 || port > 65535) {
-                    exceptionClient.setText("Порт повинен бути цілим числом від 0 до 65535");
-                    return;
-                }
-                String ip = ipClient.getText();
-                Client client = new Client(ip, port);
-
-                client.connect();
-                clientStarted = true;
-                client.readResponse();
-            } catch (UnknownHostException e) {
-                System.err.println("Шо за хост?");
-            } catch (NumberFormatException e) {
-                exceptionClient.setText("Некоректне значення порту. Введіть ціле число.");
-            } catch (IOException e) {
-                System.err.println("Невдалося підключитися " + e);
-            }
-    }).start();
     }
 }

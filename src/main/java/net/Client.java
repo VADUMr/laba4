@@ -14,33 +14,18 @@ public class Client {
         this.IP = ip;
         this.port = port;
     }
-    public void connect() throws UnknownHostException, IOException{
+    public void connect(String file) throws UnknownHostException, IOException{
         System.out.println("Підєднуємося до сервера");
         socketClient = new Socket(IP,port);
         System.out.println("З'єднання успішно встановлено");
+        sendFile(socketClient,file);
     }
-    public void connectToSendFile(File file) throws IOException {
-        System.out.println("Підєднуємося до сервера");
-        socketClient = new Socket(IP,port);
-        System.out.println("З'єднання успішно встановлено");
-        sendFile(file);
-        readResponseFile();
-    }
-    public void sendFile(File file) throws IOException {
+    public void sendFile(Socket socketClient, String files) throws IOException {
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
 
-        writer.write(file.getName());
+        writer.write(files);
         writer.newLine();
         writer.flush();
-
-        BufferedReader fileReader = new BufferedReader(new FileReader(file));
-        String line;
-        while ((line = fileReader.readLine()) != null) {
-            writer.write(line);
-            writer.newLine();
-            writer.flush();
-        }
-        fileReader.close();
     }
     public void readResponseFile() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
@@ -49,15 +34,6 @@ public class Client {
         String line;
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
-        }
-    }
-    public void readResponse() throws IOException{
-        BufferedReader serverOutput = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
-
-        System.out.println("Фідбек");
-        String clientInput;
-        while ((clientInput = serverOutput.readLine()) != null){
-            System.out.println(clientInput);
         }
     }
 }
