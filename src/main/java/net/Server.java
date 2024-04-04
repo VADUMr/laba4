@@ -1,11 +1,9 @@
 package net;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
+
 public class Server {
     private ServerSocket serverSocket;
     private int port;
@@ -19,7 +17,48 @@ public class Server {
 
         while (true) {
             Socket client = serverSocket.accept();
-            sendResponse(client);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            String clientInput;
+            if((clientInput = reader.readLine()) != null) {
+                sendResponse(client);
+            }else {
+                handleClient(client);
+            }
+        }
+    }
+    public void handleClient(Socket client) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+
+        System.out.println("dsfsdfsdf");
+
+        // Отримуємо ім'я файлу від клієнта
+        String filename = reader.readLine();
+        File file = new File(filename);
+        if (!file.exists()) {
+            writer.write("Файл не знайдено");
+            writer.newLine();
+            writer.flush();
+            return;
+        }
+
+        BufferedReader fileReader = new BufferedReader(new FileReader(file));
+        StringBuilder fileContent = new StringBuilder();
+        String line;
+        while ((line = fileReader.readLine()) != null) {
+            fileContent.append(line);
+        }
+        fileReader.close();
+
+        // Відправляємо клієнту розбитий вміст файлу
+        int startPos = 0;
+        for (int i = 0; i < 3; i++) {
+            int endPos = Math.min(startPos + (i == 0 ? 8 : i == 1 ? 10 : 12), fileContent.length());
+            writer.write(fileContent.substring(startPos, endPos));
+            writer.newLine();
+            writer.flush();
+            startPos = endPos;
+
         }
     }
     public void sendResponse(Socket client) throws IOException{
@@ -28,18 +67,5 @@ public class Server {
                 + " та IP адреси " + client.getLocalAddress());
         writer.flush();
         writer.close();
-    }
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Введіть порт для сервера");
-        int port = Integer.parseInt(scan.nextLine());
-
-        try{
-            Server soketServer = new Server(port);
-            soketServer.start();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 }

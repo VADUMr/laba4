@@ -1,8 +1,6 @@
 package net;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
@@ -21,34 +19,45 @@ public class Client {
         socketClient = new Socket(IP,port);
         System.out.println("З'єднання успішно встановлено");
     }
+    public void connectToSendFile(File file) throws IOException {
+        System.out.println("Підєднуємося до сервера");
+        socketClient = new Socket(IP,port);
+        System.out.println("З'єднання успішно встановлено");
+        sendFile(file);
+        readResponseFile();
+    }
+    public void sendFile(File file) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
+
+        writer.write(file.getName());
+        writer.newLine();
+        writer.flush();
+
+        BufferedReader fileReader = new BufferedReader(new FileReader(file));
+        String line;
+        while ((line = fileReader.readLine()) != null) {
+            writer.write(line);
+            writer.newLine();
+            writer.flush();
+        }
+        fileReader.close();
+    }
+    public void readResponseFile() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
+
+        System.out.println("Отримано відповідь від сервера2:");
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
+    }
     public void readResponse() throws IOException{
-        String clientInput;
         BufferedReader serverOutput = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
 
         System.out.println("Фідбек");
-
+        String clientInput;
         while ((clientInput = serverOutput.readLine()) != null){
             System.out.println(clientInput);
-        }
-    }
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-
-        System.out.println("Введіть порт");
-        int port = Integer.parseInt((scan.nextLine()));
-
-        System.out.println("Введіть ip");
-        String ip = scan.nextLine();
-
-        Client client = new Client(ip,port);
-        try{
-            client.connect();
-            client.readResponse();
-        }catch (UnknownHostException e){
-            System.err.println("Шо ти ввів?");
-        }catch (IOException e){
-            System.err.println("Невдалося підключитися " + e);
         }
     }
 }
