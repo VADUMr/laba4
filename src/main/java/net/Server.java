@@ -1,5 +1,7 @@
 package net;
 
+import javafx.application.Platform;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -25,6 +27,16 @@ public class Server {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
         ) {
+
+            writer.write("З'єднання успішно встановлено");
+            writer.newLine();
+            writer.flush();
+
+            writer.write("Ваш порт " + client.getPort() + " Ви підєдналися до порту " + client.getLocalPort()
+                    + " та IP адреси " + client.getLocalAddress());
+            writer.newLine();
+            writer.flush();
+
             // Отримуємо ім'я файлу від клієнта
             String filename = reader.readLine();
             File file = new File(filename);
@@ -41,11 +53,6 @@ public class Server {
                 while ((line = fileReader.readLine()) != null) {
                     fileContent.append(line);
                 }
-
-                writer.write("Ваш порт " + client.getPort() + " Ви підєдналися до порту " + client.getLocalPort()
-                        + " та IP адреси " + client.getLocalAddress());
-                writer.newLine();
-                writer.flush();
 
                 writer.write("Данні з файлу");
                 writer.newLine();

@@ -3,7 +3,8 @@ package net;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Client {
     private String IP;
@@ -27,13 +28,16 @@ public class Client {
         writer.newLine();
         writer.flush();
     }
-    public void readResponseFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
+    public List<String> readResponseFile() throws IOException {
 
-        System.out.println("Отримано відповідь від сервера2:");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
+        List<String> lines = new ArrayList<>();
         String line;
+        System.out.println("Отримана відповідь від серевера: ");
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
+            lines.add(line);
         }
+        return lines;
     }
 }

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="082ed414-b422-4f4f-976b-d56fbce4e6c6" name="Changes" comment="Сейв2.0">
+    <list default="true" id="082ed414-b422-4f4f-976b-d56fbce4e6c6" name="Changes" comment="Сейв3.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laba4/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laba4/ControllerProgram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/laba4/ViewProgram.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/laba4/ViewProgram.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,30 +41,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ApplicationProgram.executor": "Run",
-    "Application.Client.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Application.aas.executor": "Run",
-    "Application.qwe.executor": "Run",
-    "Attach to process.pid 3560.executor": "ProcessAttachDebug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Admin/IdeaProjects/laba1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ApplicationProgram.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Application.aas.executor&quot;: &quot;Run&quot;,
+    &quot;Application.qwe.executor&quot;: &quot;Run&quot;,
+    &quot;Attach to process.pid 3560.executor&quot;: &quot;ProcessAttachDebug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/IdeaProjects/laba1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\IdeaProjects\laba4\src\main\java\net" />
@@ -129,7 +128,8 @@
       <workItem from="1712182274822" duration="531000" />
       <workItem from="1712207097447" duration="10117000" />
       <workItem from="1712218600678" duration="286000" />
-      <workItem from="1712254441823" duration="9688000" />
+      <workItem from="1712254441823" duration="11288000" />
+      <workItem from="1712498243475" duration="3192000" />
     </task>
     <task id="LOCAL-00001" summary="Сейв">
       <option name="closed" value="true" />
@@ -147,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712257599970</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Сейв3.0">
+      <option name="closed" value="true" />
+      <created>1712264446397</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712264446397</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +164,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Сейв" />
     <MESSAGE value="Сейв2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сейв2.0" />
+    <MESSAGE value="Сейв3.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сейв3.0" />
   </component>
 </project>
