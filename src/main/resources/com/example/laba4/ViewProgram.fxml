@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laba4.ControllerProgram">
    <children>
-      <TextArea fx:id="events" layoutX="14.0" layoutY="188.0" prefHeight="196.0" prefWidth="342.0" wrapText="true" />
+      <TextArea style="-fx-font-family: Arial; -fx-font-size: 14px; -fx-text-fill: #333333; -fx-control-inner-background: #ffffff; -fx-background-color: #4CAF50;" fx:id="events" layoutX="14.0" layoutY="188.0" prefHeight="196.0" prefWidth="342.0" wrapText="true" />
       <TextField fx:id="portServer" layoutX="107.0" layoutY="17.0" prefHeight="25.0" prefWidth="121.0" text="45678" />
       <Button layoutX="259.0" layoutY="13.0" mnemonicParsing="false" onAction="#startServer" prefHeight="103.0" prefWidth="156.0" text="Запустити сервер" />
       <Label fx:id="exceptionServer" alignment="TOP_LEFT" layoutX="364.0" layoutY="131.0" prefHeight="93.0" prefWidth="237.0" text="Сервер ок" wrapText="true" />

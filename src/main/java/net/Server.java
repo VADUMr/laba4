@@ -37,6 +37,10 @@ public class Server {
             writer.newLine();
             writer.flush();
 
+            writer.write("Відповідь від сервера");
+            writer.newLine();
+            writer.flush();
+
             // Отримуємо ім'я файлу від клієнта
             String filename = reader.readLine();
             File file = new File(filename);

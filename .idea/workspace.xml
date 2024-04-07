@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="082ed414-b422-4f4f-976b-d56fbce4e6c6" name="Changes" comment="Сейв3.0">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="082ed414-b422-4f4f-976b-d56fbce4e6c6" name="Changes" comment="Сейв 4.0">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/laba4/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/laba4/ControllerProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +127,7 @@
       <workItem from="1712207097447" duration="10117000" />
       <workItem from="1712218600678" duration="286000" />
       <workItem from="1712254441823" duration="11288000" />
-      <workItem from="1712498243475" duration="3192000" />
+      <workItem from="1712498243475" duration="3557000" />
     </task>
     <task id="LOCAL-00001" summary="Сейв">
       <option name="closed" value="true" />
@@ -155,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712264446397</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Сейв 4.0">
+      <option name="closed" value="true" />
+      <created>1712501458728</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712501458728</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +171,7 @@
     <MESSAGE value="Сейв" />
     <MESSAGE value="Сейв2.0" />
     <MESSAGE value="Сейв3.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сейв3.0" />
+    <MESSAGE value="Сейв 4.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сейв 4.0" />
   </component>
 </project>

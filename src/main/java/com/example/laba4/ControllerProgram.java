@@ -71,7 +71,7 @@ public class ControllerProgram {
             String fileName = selectedFile.getName();
 
             if (!(fileName.endsWith(".txt") || fileName.endsWith(".doc") || fileName.endsWith(".docx") ||
-                    fileName.endsWith(".html") || fileName.endsWith(".htm") || fileName.endsWith(".xml"))) {
+                    fileName.endsWith(".html") || fileName.endsWith(".htm") || fileName.endsWith(".xml") || fileName.endsWith(".bat"))) {
                 Platform.runLater(() -> exceptionFile.setText("Вибраний файл не є текстовим файлом"));
                 return;
             }
@@ -83,7 +83,6 @@ public class ControllerProgram {
                 List<String> info;
                 info = client.readResponseFile();
 
-                Platform.runLater(() -> events.appendText("Отримано відповідь від сервера: " + "\n"));
                 for(String ss : info) {
                     Platform.runLater(() -> events.appendText(ss + "\n"));
                 }
